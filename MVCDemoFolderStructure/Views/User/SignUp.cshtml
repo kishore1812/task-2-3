@@ -1,0 +1,141 @@
+﻿@model MVCDemoFolderStructure.Models.UserModel
+
+
+
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<h2>SignUp</h2>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <h4>Sign Up</h4>
+        <form method="post" action="@Url.Action("SignUp","User")" class="form-horizontal">
+            <div class="form-group">
+                <label for="UserName" class="control-label">User Name</label>
+                @Html.TextBoxFor(model => model.UserName, htmlAttributes: new
+           {
+
+
+               @class = "form-control"
+           })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class="text-danger"})
+
+            </div>
+
+            <div class="form-group">
+                <label for="EmailId" class="control-label">User Email Id</label>
+                @Html.TextBoxFor(model => model.EmailId, htmlAttributes: new
+                {
+               @class = "form-control"
+           })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                <label for="Password" class="control-label">User Password</label>
+                @Html.PasswordFor(model => model.Password, htmlAttributes: new
+                {
+               @class = "form-control"
+           })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                <label for="Confirmpassword" class="control-label">Confirm Password</label>
+                @Html.PasswordFor(model => model.ConfirmPassword, htmlAttributes: new
+                {
+               @class = "form-control"
+           })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                <label for="MobileNumber" class="control-label">Mobile Number</label>
+                @Html.TextBoxFor(model => model.MobileNumber, htmlAttributes: new
+                {
+               @class = "form-control"
+           })
+                @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                <label for="Gender" class="control-label">Select Gender</label>
+                <input type="radio" name="Gender" id="maleGender" value="Male" class="radio-inline" />Male
+                <input type="radio" name="Gender" id="femaleGender" value="Female" class="radio-inline" />Male
+            </div>
+
+
+            <div class="form-group">
+                <label for="ImageUrl" class="control-label">Select Image</label>
+                <input type="file" class="form-control" name="UserImageUrl" id="UserImageUrl" />
+
+
+
+
+            </div>
+            <div class="form-group">
+                <label for="CountryId" class="control-label">User Country</label>
+                @Html.DropDownList("CountryId", (IEnumerable<SelectListItem>)(ViewBag.CountryDataSource), "Select Country", new { @class = "form-control" })
+
+
+
+            </div>
+
+            
+                 <div class="form-group">
+                     <label for="StateId" class="control-label">User State</label>
+                 @Html.DropDownList("StateId", (IEnumerable<SelectListItem>)(ViewBag.StateDataSource), "Select State", new { @class = "form-control" })
+                  </div>
+
+                <div class="btn-group">
+                 <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-user"></i>Sign Up</button>
+                </div>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <h4> Sign In </h4>
+
+        <form method="post" action="@Url.Action("SignIn","User")" class="form-horizontal">
+            <div class="form-group">
+                <label for="UserName" class="control-label">User Name</label>
+                @Html.TextBoxFor(model => model.UserName, htmlAttributes: new
+           {
+
+
+               @class = "form-control"
+           })
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="Password" class="control-label">User Password</label>
+                @Html.TextBoxFor(model => model.Password, htmlAttributes: new
+           {
+
+
+               @class = "form-control"
+           })
+
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-user"></i>Sign In</button>
+            </div>
+
+</div>
+@if (TempData["message"]!=null)
+{
+    <div class=" alert alert-sucess">@TempData["message"]</div>
+}
+        </form>
+
+</div>
